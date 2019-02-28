@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blockly</title>
+    <!-- blockly 相关的 -->
     <script src="blockly_compressed.js"></script>
     <script src="blocks_compressed.js"></script>
+    <!-- 小型的 js 解析器 -->
     <script src="acorn_interpreter.js"></script>
     <script src="prettify-bundle.js"></script>
+    <!-- 导出相关语言的生成器 -->
     <script src="javascript_compressed.js"></script>
     <script src="python_compressed.js"></script>
     <script src="php_compressed.js"></script>
     <script src="lua_compressed.js"></script>
+    <!-- 编辑器语言 -->
     <script src="msg/js/zh-hans.js"></script>
     <link href="styles/blockly-demo.css" rel="stylesheet">
 </head>
@@ -344,7 +348,24 @@
     <xml id="blocklyDefault" style="display: none">
     </xml>
     <script>
-    var workspace = Blockly.inject('blocklyDiv', { toolbox: document.getElementById('toolbox') });
+    var workspace = Blockly.inject('blocklyDiv', {
+        toolbox: document.getElementById('toolbox'),
+        zoom: {
+            controls: true,
+            wheel: true,
+            startScale: 1.0,
+            maxScale: 1.5,
+            minScale: 0.7,
+            scaleSpeed: 0.2
+        },
+        grid: {
+            spacing: 20,
+            length: 3,
+            colour: '#ccc',
+            snap: false
+        },
+        trashcan: true
+    });
     var defaultBlocks = document.getElementById('blocklyDefault');
     Blockly.Xml.domToWorkspace(defaultBlocks, workspace);
 
